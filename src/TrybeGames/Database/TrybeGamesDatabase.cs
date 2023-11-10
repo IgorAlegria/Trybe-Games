@@ -54,13 +54,13 @@ public class TrybeGamesDatabase
         var gameList = from game in Games
                        from studio in GameStudios
                        where game.DeveloperStudio == studio.Id
-                       select new GameWithStudio 
+                       select new GameWithStudio
                        {
-                        GameName = game.Name,
-                        StudioName = studio.Name,
-                        NumberOfPlayers = game.Players.Count(),
+                           GameName = game.Name,
+                           StudioName = studio.Name,
+                           NumberOfPlayers = game.Players.Count(),
                        };
-        
+
         return gameList.ToList();
         // throw new NotImplementedException();
     }
@@ -69,8 +69,8 @@ public class TrybeGamesDatabase
     public List<GameType> GetGameTypes()
     {
         // Implementar
-    var typeList = from game in Games
-                    select new List<GameType> {game.GameType};
+        var typeList = from game in Games
+                       select new List<GameType> { game.GameType };
 
         return (List<GameType>)typeList;
         // throw new NotImplementedException();
