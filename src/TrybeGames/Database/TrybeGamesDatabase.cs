@@ -51,7 +51,18 @@ public class TrybeGamesDatabase
     public List<GameWithStudio> GetGamesWithStudio()
     {
         // Implementar
-        throw new NotImplementedException();
+        var gameList = from game in Games
+                       from studio in GameStudios
+                       where game.DeveloperStudio == studio.Id
+                       select new GameWithStudio 
+                       {
+                        GameName = game.Name,
+                        StudioName = studio.Name,
+                        NumberOfPlayers = game.Players.Count(),
+                       };
+        
+        return gameList.ToList();
+        // throw new NotImplementedException();
     }
 
     // 8. Crie a funcionalidade de buscar todos os diferentes Tipos de jogos dentre os jogos cadastrados
