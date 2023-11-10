@@ -12,7 +12,12 @@ public class TrybeGamesDatabase
     public List<Game> GetGamesDevelopedBy(GameStudio gameStudio)
     {
         // implementar
-        throw new NotImplementedException();
+        var getGames = from game in Games
+                    where game.DeveloperStudio == gameStudio.Id
+                    select game;
+
+        return getGames.ToList();
+        // throw new NotImplementedException();
     }
 
     // 5. Crie a funcionalidade de buscar jogos jogados por uma pessoa jogadora
