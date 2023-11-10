@@ -139,7 +139,7 @@ public class TrybeGamesController
     public void AddGameStudio()
     {
         // implementar
-        Console.WriteLine("Digite onome do Studio: ");
+        Console.WriteLine("Digite o nome do Studio: ");
         var name = Console.ReadLine();
         GameStudio studio = new()
         {
@@ -154,7 +154,25 @@ public class TrybeGamesController
     public void AddGame()
     {
         // implementar
-        Console.WriteLine("Ainda não é possível realizar essa funcionalidade!");
+        Console.WriteLine("Digite o nome do Game: ");
+        var name = Console.ReadLine();
+        Console.WriteLine("Digite o data de lançamento do Game: ");
+        var releaseDate = Console.ReadLine();
+        DateTime data;
+        bool resultado = DateTime.TryParse(releaseDate, out data);
+        Console.WriteLine("Digite o tipo do Game: ");
+        var gameType = Console.ReadLine();
+        int convertGameType = Convert.ToInt32(gameType);
+        Game game = new()
+        {
+            Name = name,
+            Id = database.Games.Count() + 1,
+            GameType = (GameType)convertGameType,
+            ReleaseDate = data,
+
+        };
+        database.Games.Add(game);
+        // Console.WriteLine("Ainda não é possível realizar essa funcionalidade!");
     }
 
     public void ChangeGameStudio(Game game)
