@@ -70,9 +70,10 @@ public class TrybeGamesDatabase
     {
         // Implementar
         var typeList = from game in Games
-                       select new List<GameType> { game.GameType };
+                       group game by game.GameType into gameTypes
+                       select gameTypes.Key;
 
-        return (List<GameType>)typeList;
+        return typeList.ToList();
         // throw new NotImplementedException();
     }
 
