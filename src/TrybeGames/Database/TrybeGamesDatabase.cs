@@ -69,7 +69,11 @@ public class TrybeGamesDatabase
     public List<GameType> GetGameTypes()
     {
         // Implementar
-        throw new NotImplementedException();
+    var typeList = from game in Games
+                    select new List<GameType> {game.GameType};
+
+        return (List<GameType>)typeList;
+        // throw new NotImplementedException();
     }
 
     // 9. Crie a funcionalidade de buscar todos os estúdios de jogos junto dos seus jogos desenvolvidos com suas pessoas jogadoras
