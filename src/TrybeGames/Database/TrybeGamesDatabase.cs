@@ -25,8 +25,8 @@ public class TrybeGamesDatabase
     {
         // Implementar
         var getGames = from game in Games
-                       from gameplayer in game.Players
-                       where gameplayer == player.Id
+                       from gamePlayer in game.Players
+                       where gamePlayer == player.Id
                        select game;
 
         return getGames.ToList();
@@ -36,8 +36,14 @@ public class TrybeGamesDatabase
     // 6. Crie a funcionalidade de buscar jogos comprados por uma pessoa jogadora
     public List<Game> GetGamesOwnedBy(Player playerEntry)
     {
-        // Implementar
-        throw new NotImplementedException();
+        // Implementar 
+        var getGames = from game in Games
+                       from gameOwned in playerEntry.GamesOwned
+                       where game.Id == gameOwned
+                       select game;
+
+        return getGames.ToList();
+        // throw new NotImplementedException();
     }
 
 
