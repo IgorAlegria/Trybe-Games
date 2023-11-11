@@ -81,7 +81,7 @@ public class TrybeGamesDatabase
     public List<StudioGamesPlayers> GetStudiosWithGamesAndPlayers()
     {
         // Implementar
-        var gamesByStudio = (from studio in GameStudios
+        var studiosWithGamesAndPlayers = (from studio in GameStudios
                              select new StudioGamesPlayers
                              {
                                  GameStudioName = studio.Name,
@@ -97,7 +97,7 @@ public class TrybeGamesDatabase
                                           }).ToList()
                              }).ToList();
 
-        return gamesByStudio;
+        return studiosWithGamesAndPlayers;
 
         // throw new NotImplementedException();
     }
